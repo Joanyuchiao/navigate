@@ -44,7 +44,8 @@ Route _createRoute() {
     },
   );
 }
-
+const items=<String>['第1項','第2項','第3項','第4項','第5項','第6項','第7項','第8項'];
+const icons=<String>['Icons.accessible ','Icons.abc_sharp','Icons.access_alarms_sharp ','Icons.accessibility_sharp','Icons.account_balance_sharp ','Icons.account_circle_rounded ','Icons.add_a_photo_outlined ','Icons.add_circle_outline_outlined'];
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
 
@@ -52,9 +53,31 @@ class Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text('Page 2'),
+      body: Container(
+
+
+        child: ListView.separated(
+
+          itemCount: items.length,
+          itemBuilder: (content,index) =>
+
+              Card(
+                child:ListTile(title:Text(items[index]),
+                  onTap:(){},
+                  leading:Container(
+                    child: CircleAvatar(backgroundImage: AssetImage(icons[index],),),
+
+                  ),
+                  subtitle:Text(items[index]+'項目說明',style:TextStyle(fontSize: 16),),),
+              ),
+          separatorBuilder: (content,index) => const Divider(),
+        ),
       ),
+
+
+
+
+
     );
   }
 }
